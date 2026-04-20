@@ -68,7 +68,7 @@
   }
 
   .result-card {
-    @apply bg-slate-950 border border-slate-800 rounded-xl p-5 hover:border-cyan-700/50 transition-colors group;
+    @apply bg-slate-950 border border-slate-800 rounded-xl p-5 hover:border-cyan-700/50 transition-colors;
     animation: fadeIn 0.5s ease-in-out;
   }
 

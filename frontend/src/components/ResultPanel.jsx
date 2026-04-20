@@ -66,7 +66,7 @@ function ResultCard({ res, idx }) {
   const isGoldenZone = res.sum >= 108 && res.sum <= 168;
 
   return (
-    <div className="result-card">
+    <div className="result-card group">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         {/* 번호볼 */}
         <div className="flex items-center gap-3">
