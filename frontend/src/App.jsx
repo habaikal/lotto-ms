@@ -18,6 +18,7 @@ export default function App() {
   const [logs, setLogs] = useState([]);
   const [results, setResults] = useState([]);
   const [gameCount, setGameCount] = useState(5);
+
   const [simulationCount, setSimulationCount] = useState(1000000);
 
   const workerRef = React.useRef(null);
