@@ -41,7 +41,7 @@ jobs:
       - name: 🔨 Build (GitHub Pages base URL 적용)
         working-directory: frontend
         env:
-          # GitHub Pages URL 형식: https://<owner>.github.io/<repo>/
+          # 빌드 결과물은 ../docs 에 저장됨 (vite.config.js outDir 설정)
           VITE_BASE_URL: /lotto-ms/
         run: npm run build
 
@@ -51,7 +51,8 @@ jobs:
       - name: 📤 Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: frontend/dist
+          # outDir를 docs로 변경했으므로 docs 폴더를 업로드
+          path: docs
 
   # ── 2단계: 배포 ──────────────────────────────────────────────
   deploy:

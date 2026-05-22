@@ -3,10 +3,9 @@ import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  // GitHub Pages 배포 시 저장소 이름을 base로 설정
-  // 로컬 개발: VITE_BASE_URL 미설정 → '/'
-  // GitHub Pages: VITE_BASE_URL=/lotto-ms/ → '/lotto-ms/'
-  base: process.env.VITE_BASE_URL || '/',
+  // GitHub Pages 배포: 항상 /lotto-ms/ base 사용
+  // 로컬 개발 서버는 proxy 통해 작동하므로 base 달라도 무관
+  base: process.env.VITE_BASE_URL ?? '/lotto-ms/',
   plugins: [react()],
   worker: {
     format: 'iife', // GitHub Pages는 모듈 Worker 미지원 → iife로 변경
@@ -21,7 +20,9 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: 'dist',
+    // 빌드 결과물을 docs/ 폴더에 직접 저장 → GitHub Pages 즉시 배포 가능
+    outDir: '../docs',
+    emptyOutDir: true,
     rollupOptions: {
       output: {
         manualChunks: {

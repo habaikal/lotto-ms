@@ -102,6 +102,12 @@ export default function App() {
     }
   }, [addLog]);
 
+  // 결과 초기화
+  const resetResults = useCallback(() => {
+    setResults([]);
+    addLog('결과가 초기화되었습니다.');
+  }, [addLog]);
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-200 font-sans p-4 md:p-8 flex flex-col items-center">
       <Header />
@@ -132,6 +138,7 @@ export default function App() {
             isProcessing={isProcessing}
             progress={progress}
             gameCount={gameCount}
+            onResetResults={resetResults}
           />
         </div>
       </main>
