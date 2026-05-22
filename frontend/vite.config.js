@@ -3,9 +3,9 @@ import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  // GitHub Pages 배포: 항상 /lotto-ms/ base 사용
-  // 로컬 개발 서버는 proxy 통해 작동하므로 base 달라도 무관
-  base: process.env.VITE_BASE_URL ?? '/lotto-ms/',
+  // 개발(dev) 시에는 '/', 빌드(build) 시에는 '/lotto-ms/' 사용
+  // 환경변수 VITE_BASE_URL로 오버라이드 가능
+  base: process.env.VITE_BASE_URL ?? (process.env.NODE_ENV === 'production' ? '/lotto-ms/' : '/'),
   plugins: [react()],
   worker: {
     format: 'iife', // GitHub Pages는 모듈 Worker 미지원 → iife로 변경
